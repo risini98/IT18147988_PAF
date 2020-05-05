@@ -1,10 +1,6 @@
 package com;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Doctor 
 { 	// A common method to connect to the DB
@@ -22,7 +18,6 @@ public class Doctor
 		return con;
 	}
 
-	// insert function
 	public String insertDoctor(String name, String age, String mail, String speciality)
 	{
 		String output = "";
@@ -39,17 +34,20 @@ public class Doctor
 				
 				// binding values
 				preparedStmt.setInt(1, 0);
-				preparedStmt.setString(2, name);
+				preparedStmt.setString(2, name );
 				preparedStmt.setString(3, age);
 				preparedStmt.setString(4, mail);
 				preparedStmt.setString(5, speciality);
+				
+				
+				
 
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
 				
 				String newDoctor = readDoctor();
-				output = "{\"status\":\"success\", \"data\": \"" + newDoctor + "\"}";
+				output = "{\"status\":\"success\",\"data\":\""+newDoctor+"\"}";
 			}
 			catch (Exception e)
 			{
@@ -59,7 +57,7 @@ public class Doctor
 			
 			return output;
 		}
-		// read function
+		
 		public String readDoctor()
 		{
 			String output = "";
@@ -85,15 +83,17 @@ public class Doctor
 					String doctorAge = rs.getString("doctorAge");
 					String doctorMail =rs.getString("doctorMail");
 					String doctorSpeciality = rs.getString("doctorSpeciality");
-				
+					
+					
 					// Add into the html table
-					output += "<tr><td><input id='hidDoctorIDUpdate'name='hidDoctorIDUpdate' type='hidden' value='" + doctorID + "'>"+ doctorName + "</td>";
-					output += "<td>" + doctorAge + "</td>";
-					output += "<td>" + doctorMail + "</td>";
-					output += "<td>" + doctorSpeciality + "</td>";
+					output += "<tr><td><input id='hidDoctorIDUpdate'name='hidDoctorIDUpdate' type='hidden' value='"+doctorID+"'>"+doctorName+"</td>";
+					output += "<td>" +doctorAge+"</td>";
+					output += "<td>" +doctorMail+"</td>";
+					output += "<td>" +doctorSpeciality+"</td>";
+					
 				
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary'></td>"+ "<td><input name='btnRemove'type='button' value='Remove'class='btnRemove btn btn-danger'data-doctorid='"+ doctorID + "'>" + "</td></tr>";
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary'></td>"+"<td><input name='btnRemove'type='button' value='Remove'class='btnRemove btn btn-danger'data-doctorid='"+ doctorID + "'>" + "</td></tr>";
 				}
 				
 				con.close();
@@ -108,9 +108,8 @@ public class Doctor
 			}
 			return output;
 		}
- 		
-		// Update function
-		public String updateDoctor(String doctorID, String name, String age, String mail, String speciality )
+		
+		public String updateDoctor(String doctorID, String name, String age, String mail, String speciality)
 		{
 		String output = "";
 		
@@ -138,16 +137,16 @@ public class Doctor
 				con.close();
 		
 				String newDoctor = readDoctor();
-				output = "{\"status\":\"success\", \"data\": \"" + newDoctor + "\"}";
+				output = "{\"status\":\"success\",\"data\":\""+newDoctor+"\"}";
 		}
 		catch (Exception e)
 		{
-			output = "{\"status\":\"error\", \"data\":\"Error while updating the doctor details.\"}";
+			output = "{\"status\":\"error\",\"data\":\"Error while updating the doctor details.\"}";
 			System.err.println(e.getMessage());
 		}
 			return output;
 	}
-	//Delete function
+	
 	public String deleteDoctor(String doctorID)
 	{
 		String output = "";
@@ -183,4 +182,3 @@ public class Doctor
 		return output;
 		}
 }
-	

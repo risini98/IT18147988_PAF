@@ -6,24 +6,23 @@ $(document).ready(function() {
     $("#alertError").hide();
 });
 // SAVE ============================================
-$(document).on("click", "#btnSave", function(event) {
-    //Clear Alerts----------------------------
+$(document).on("click", "#btnSave", function(event) 
+{
+    // Clear alerts---------------------
     $("#alertSuccess").text("");
     $("#alertSuccess").hide();
     $("#alertError").text("");
     $("#alertError").hide();
-    
-    //Form Validation-------------------------
+    // Form validation-------------------
     var status = validateDoctorForm();
-    if (status != true)
+    if (status != true) 
     {
-    	$("alertError").text(status);
-    	$("alertError").show();
-   		return;
+        $("#alertError").text(status);
+        $("#alertError").show();
+        return;
     }
-    // If valid----------------------------------
+    // If valid------------------------
     var type = ($("#hidDoctorIDSave").val() == "") ? "POST" : "PUT";
-    
     $.ajax(
     	{
     		url : "DoctorAPI",
@@ -66,6 +65,7 @@ function onDoctorSaveComplete(response, status)
 		$("#formDoctor")[0].reset();
 		
 }
+
 // UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event) {
     $("#hidDoctorIDSave").val($(this).closest("tr").find('#hidDoctorIDUpdate').val());
@@ -73,10 +73,12 @@ $(document).on("click", ".btnUpdate", function(event) {
     $("#doctorAge").val($(this).closest("tr").find('td:eq(1)').text());
     $("#doctorMail").val($(this).closest("tr").find('td:eq(2)').text());
     $("#doctorSpeciality").val($(this).closest("tr").find('td:eq(3)').text());
+  
 });
-//REMOVE==================================================
+
+// REMOVE==================================================
 $(document).on("click", ".btnRemove", function(event)
-{
+		{
 		$.ajax(
 		{
 		url : "DoctorAPI",
@@ -95,19 +97,16 @@ function onDoctorDeleteComplete(response, status)
 if (status == "success")
 	{
 		var resultSet = JSON.parse(response);
-		
 		if (resultSet.status.trim() == "success")
 			{
 				$("#alertSuccess").text("Successfully deleted.");
 				$("#alertSuccess").show();
-				
 				$("#divDoctorGrid").html(resultSet.data);
 			} else if (resultSet.status.trim() == "error")
 			{
 				$("#alertError").text(resultSet.data);
 				$("#alertError").show();
 			}
-		
 	} else if (status == "error")
 	{
 		$("#alertError").text("Error while deleting.");
@@ -136,6 +135,6 @@ function validateDoctorForm() {
     if ($("#doctorSpeciality").val().trim() == "") {
         return "Insert doctor speciality.";
     }
-
+    
     return true;
 }
