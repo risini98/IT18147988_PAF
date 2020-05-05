@@ -1,6 +1,6 @@
 package com;
 
-
+import com.Doctor;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import com.Doctor;
+
 
 /**
  * Servlet implementation class DoctorAPI

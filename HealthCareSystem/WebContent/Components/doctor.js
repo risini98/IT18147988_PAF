@@ -68,10 +68,10 @@ function onDoctorSaveComplete(response, status)
 // UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event) {
     $("#hidDoctorIDSave").val($(this).closest("tr").find('#hidDoctorIDUpdate').val());
-    $("#name").val($(this).closest("tr").find('td:eq(0)').text());
-    $("#age").val($(this).closest("tr").find('td:eq(1)').text());
-    $("#mail").val($(this).closest("tr").find('td:eq(2)').text());
-    $("#speciality").val($(this).closest("tr").find('td:eq(3)').text());
+    $("#doctorName").val($(this).closest("tr").find('td:eq(0)').text());
+    $("#doctorAge").val($(this).closest("tr").find('td:eq(1)').text());
+    $("#doctorMail").val($(this).closest("tr").find('td:eq(2)').text());
+    $("#doctorSpeciality").val($(this).closest("tr").find('td:eq(3)').text());
 });
 //REMOVE==================================================
 $(document).on("click", ".btnRemove", function(event)
@@ -117,19 +117,19 @@ if (status == "success")
 // CLIENTMODEL=========================================================================
 function validateDoctorForm() {
 
-    if ($("#name").val().trim() == "") {
+    if ($("#doctorName").val().trim() == "") {
         return "Insert doctor name.";
     }
 
-    if ($("#age").val().trim() == "") {
+    if ($("#doctorAge").val().trim() == "") {
         return "Insert doctor age.";
     }
 
-    if ($("#mail").val().trim() == "") {
+    if ($("#doctorMail").val().trim() == "") {
         return "Insert doctor mail.";
     }
 
-    if ($("#speciality").val().trim() == "") {
+    if ($("#doctorSpeciality").val().trim() == "") {
         return "Insert doctor speciality.";
     }
 

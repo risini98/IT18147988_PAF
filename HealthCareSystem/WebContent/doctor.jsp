@@ -6,10 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Health Care Management</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="./Components/doctor.js"></script>
+<link rel="stylesheet" href="Views/bootstrap.min.css">
+<script src="Components/jquery.min.js"></script>
+<script src="Components/doctor.js"></script>
   <style>
  body {
  	background-color: #E6E6FA;
@@ -25,23 +24,23 @@
 		<h2>Doctor Register Details</h2><br><br>
 		
 		<form class="formDoctor" name="formDoctor" method="post" action="doctor.jsp">
-				<div class="form-group">
 				
-					<label for="name">Doctor Name:</label>
-					<input type="text" class="form-control"  id="name" placeholder="Enter your name" name="name"><br>
+				
+					Doctor Name:
+					<input type="text" class="form-control form-control-sm"  id="doctorName" placeholder="Enter your name" name="doctorName"><br>
 					
-					<label for="age">Doctor Age:</label>
-					<input type="text" class="form-control"  id="age" placeholder="Enter your age" name="age"><br>
+					Doctor Age:
+					<input type="text" class="form-control form-control-sm"  id="doctorAge" placeholder="Enter your age" name="doctorAge"><br>
 					
-					<label for="mail">Mail:</label>
-					<input type="text" class="form-control" id="mail" placeholder="Enter your mail" name="mail"><br>
+					Mail:
+					<input type="text" class="form-control form-control-sm" id="doctorMail" placeholder="Enter your mail" name="doctorMail"><br>
 					
-					<label for="speciality">Speciality:</label>
-					<input type="text" class="form-control" id="speciality" placeholder="Enter your speciality" name="speciality"><br>
+					Speciality:
+					<input type="text" class="form-control form-control-sm" id="doctorSpeciality" placeholder="Enter your speciality" name="doctorSpeciality"><br>
 					
 					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
-					<input type="hidden" id="hidDoctorIDSave" name="hiDoctorIDSave" value="">					
-				</div>
+					<input type="hidden" id="hidDoctorIDSave" name="hidDoctorIDSave" value="">					
+				
 			</form>
 			<div id="alertSuccess" class="alert alert-success"></div>
 	        <div id="alertError" class="alert alert-danger"></div>
