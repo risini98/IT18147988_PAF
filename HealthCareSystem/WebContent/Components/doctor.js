@@ -9,19 +9,19 @@ $(document).ready(function() {
 $(document).on("click", "#btnSave", function(event) {
     //Clear Alerts----------------------------
     $("#alertSuccess").text("");
-    $("#alertSuccess").hide("");
+    $("#alertSuccess").hide();
     $("#alertError").text("");
-    $("#alertError").hide("");
+    $("#alertError").hide();
     
     //Form Validation-------------------------
     var status = validateDoctorForm();
     if (status != true)
-    	{
-    		$("alertError").text(status);
-    		$("slertError").show();
-    		return;
-    	}
-    // If valid
+    {
+    	$("alertError").text(status);
+    	$("alertError").show();
+   		return;
+    }
+    // If valid----------------------------------
     $("#formDoctor").submit();
 });
 // UPDATE==========================================
