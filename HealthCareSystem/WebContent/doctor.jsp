@@ -1,41 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import="com.Doctor" %>  
-<% 
-	//Initialize--------------------------
-	session.setAttribute("statusMsg","");
-	System.out.println("Trying to process...");
-
-	//Save------------------------------------
-   if (request.getParameter("name") != null) {
-	Doctor Doctor_1 = new Doctor();
-    String
-    stsMsg = "";
-    
-    //Insert--------------------------
-    if (request.getParameter("hidDoctorIDSave") == "") {
-        stsMsg = Doctor_1.insertDoctor(request.getParameter("name"),
-                request.getParameter("age"), request
-                        .getParameter("mail"), request
-                        .getParameter("speciality"));
-    } else//Update----------------------
-    {
-        stsMsg = Doctor_1.updateDoctor(request.getParameter("hidDoctorIDSave"),
-                        request.getParameter("name"), request
-                                .getParameter("age"), request
-                                .getParameter("mail"), request
-                                .getParameter("speciality"));
-    }
-    session.setAttribute("statusMsg", stsMsg);
-   }
-   //Delete--------------------------------
-   if (request.getParameter("hidDoctorIDDelete") != null) {
-	Doctor
-	Doctor_1 = new Doctor();
-    String stsMsg = Doctor_1.deleteDoctor(request.getParameter("hidDoctorIDDelete"));
-    session.setAttribute("statusMsg", stsMsg);
-   }
-   %>    	 
+<%@ page import="com.Doctor" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+     	 
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,22 +39,19 @@
 					<label for="speciality">Speciality:</label>
 					<input type="text" class="form-control" id="speciality" placeholder="Enter your speciality" name="speciality"><br>
 					
-					<input id="btnSave" name="btnSave" type="submit" value="Save"
-			        class="btn btn-primary"> 
-					<input type="hidden" id="hidDoctorIDSave" name="hidDoctorIDSave" value="">					
+					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
+					<input type="hidden" id="hidDoctorIDSave" name="hiDoctorIDSave" value="">					
 				</div>
 			</form>
-			<div id="alertSuccess" class="alert alert-success">
-		            <%
-			          out.print(session.getAttribute("statusMsg"));
-	             	%>
-	        </div>
+			<div id="alertSuccess" class="alert alert-success"></div>
 	        <div id="alertError" class="alert alert-danger"></div>
 	        <br>
-	        	<%
-	                Doctor doctorObj = new Doctor();
-	                out.print(doctorObj.readDoctor());
-             	%>
+	        	<div id="DoctorGrid">
+	        		<%
+	                	Doctor doctorObj = new Doctor();
+	                	out.print(doctorObj.readDoctor());
+             		%>
+             	</div>
 	       </div>  
 	       </div>
 	       </div>
