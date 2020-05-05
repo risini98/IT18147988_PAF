@@ -7,20 +7,21 @@ $(document).ready(function() {
 });
 // SAVE ============================================
 $(document).on("click", "#btnSave", function(event) {
-    // Clear alerts---------------------
+    //Clear Alerts----------------------------
     $("#alertSuccess").text("");
-    $("#alertSuccess").hide();
+    $("#alertSuccess").hide("");
     $("#alertError").text("");
-    $("#alertError").hide();
-    // Form validation-------------------
+    $("#alertError").hide("");
+    
+    //Form Validation-------------------------
     var status = validateDoctorForm();
-    if (status != true) 
-    {
-        $("#alertError").text(status);
-        $("#alertError").show();
-        return;
-    }
-    // If valid------------------------
+    if (status != true)
+    	{
+    		$("alertError").text(status);
+    		$("slertError").show();
+    		return;
+    	}
+    // If valid
     $("#formDoctor").submit();
 });
 // UPDATE==========================================
