@@ -1,6 +1,8 @@
-<%@ page import="com.Doctor" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-     	 
+<%@ page import="com.Doctor" %> 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ 
+ 	 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +12,10 @@
 <script src="Components/jquery.min.js"></script>
 <script src="Components/doctor.js"></script>
   <style>
- body {
- 	background-color: #E6E6FA;
- }
-  </style>
+body {
+  background-color: #E6E6FA;
+}
+</style>
 </head>
 <body >
 <h1 style="font-family:verdana">Health Care Management</h1><br><br>
@@ -21,11 +23,9 @@
 	<div class="row">
 	<div class="col-6">
 		
-		<h2>Doctor Register Details</h2><br><br>
+		<h2>Doctor Register Details</h2><br>
 		
-		<form class="formDoctor" name="formDoctor" method="post" action="doctor.jsp">
-				
-				
+			<form id="formDoctor" name="formDoctor">
 					Doctor Name:
 					<input type="text" class="form-control form-control-sm"  id="doctorName" placeholder="Enter your name" name="doctorName"><br>
 					
@@ -40,16 +40,15 @@
 					
 					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
 					<input type="hidden" id="hidDoctorIDSave" name="hidDoctorIDSave" value="">					
-				
 			</form>
-			<div id="alertSuccess" class="alert alert-success"></div>
-	        <div id="alertError" class="alert alert-danger"></div>
+				<div id="alertSuccess" class="alert alert-success"></div>
+	        	<div id="alertError" class="alert alert-danger"></div>
 	        <br>
 	        	<div id="DoctorGrid">
-	        		<%
-	                	Doctor doctorObj = new Doctor();
-	                	out.print(doctorObj.readDoctor());
-             		%>
+	        	<%
+	                Doctor doctorObj = new Doctor();
+	                out.print(doctorObj.readDoctor());
+             	%>
              	</div>
 	       </div>  
 	       </div>
@@ -57,5 +56,3 @@
 				   
 </body>
 </html>
-
-

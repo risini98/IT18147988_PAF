@@ -1,23 +1,21 @@
 package com;
 
-import com.Doctor;
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+import com.Doctor;
 
 /**
  * Servlet implementation class DoctorAPI
  */
 @WebServlet("/DoctorAPI")
-public class DoctorAPI extends HttpServlet
-{
+public class DoctorAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	Doctor doctorObj = new Doctor();
@@ -25,8 +23,7 @@ public class DoctorAPI extends HttpServlet
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DoctorAPI() 
-    {
+    public DoctorAPI() {
         super();
         
     }
@@ -48,7 +45,8 @@ public class DoctorAPI extends HttpServlet
 		String output = doctorObj.insertDoctor(request.getParameter("doctorName"),
 				request.getParameter("doctorAge"),
 				request.getParameter("doctorMail"),
-				request.getParameter("doctorSpeciality"));
+				request.getParameter("doctorSpeciality")
+			);
 				response.getWriter().write(output);
 	}
 
@@ -62,7 +60,8 @@ public class DoctorAPI extends HttpServlet
 		paras.get("doctorName").toString(),
 		paras.get("doctorAge").toString(),
 		paras.get("doctorMail").toString(),
-		paras.get("doctorSpeciality").toString());
+		paras.get("doctorSpeciality").toString()
+		);
 		response.getWriter().write(output);
 	}
 
