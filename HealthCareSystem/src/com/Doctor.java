@@ -32,26 +32,28 @@ public class Doctor
 				if (con == null)
 				{return "Error while connecting to the database for inserting."; }
 				// create a prepared statement
-				String query = " insert into doctor(`doctorName`,`doctorAge`,`doctorMail`,`doctorSpeciality`)"
-						+ " values (?, ?, ?, ?)";
+				String query = " insert into doctor(`doctorID`,`doctorName`,`doctorAge`,`doctorMail`,`doctorSpeciality`)"
+						+ " values (?,?, ?, ?, ?)";
 				
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 				
 				// binding values
-				preparedStmt.setString(1, name);
-				preparedStmt.setString(2, age);
-				preparedStmt.setString(3, mail);
-				preparedStmt.setString(4, speciality);
+				preparedStmt.setInt(1, 0);
+				preparedStmt.setString(2, name);
+				preparedStmt.setString(3, age);
+				preparedStmt.setString(4, mail);
+				preparedStmt.setString(5, speciality);
 
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
 				
-				output = "Inserted successfully";
+				String newDoctor = readDoctor();
+				output = "{\"status\":\"success\", \"data\": \"" + newDoctor + "\"}";
 			}
 			catch (Exception e)
 			{
-				output = "Error while inserting the doctor details.";
+				output = "{\"status\":\"error\", \"data\":\"Error while inserting the doctor details.\"}";
 				System.err.println(e.getMessage());
 			}
 			
@@ -69,7 +71,7 @@ public class Doctor
 				{return "Error while connecting to the database for reading."; }
 				
 				// Prepare the html table to be displayed
-				output = "<table border=\"1\"><tr><th>Doctor Name</th><th>Age</th><th>Doctor Mail</th><th>Doctor Speciality</th><th>Update</th><th>Remove</th></tr>";
+				output = "<table border='1'><tr><th>Doctor Name</th><th>Age</th><th>Doctor Mail</th><th>Doctor Speciality</th><th>Update</th><th>Remove</th></tr>";
 				
 				String query = "select * from doctor";
 				Statement stmt = con.createStatement();
@@ -85,17 +87,13 @@ public class Doctor
 					String doctorSpeciality = rs.getString("doctorSpeciality");
 				
 					// Add into the html table
-					output += "<tr><td><input id=\"hidDoctorIDUpdate\"name=\"hidDoctorIDUpdate\"type=\"hidden\" value=\"" + doctorID + "\">"
-                            + doctorName + "</td>";
+					output += "<tr><td><input id='hidDoctorIDUpdate'name='hidDoctorIDUpdate' type='hidden' value='" + doctorID + "'>"+ doctorName + "</td>";
 					output += "<td>" + doctorAge + "</td>";
 					output += "<td>" + doctorMail + "</td>";
 					output += "<td>" + doctorSpeciality + "</td>";
 				
 					// buttons
-					output += "<td><input name=\"btnUpdate\" type=\"submit\"value=\"Update\" class=\"btn btn-warning btnUpdate\"></td>"
-							+ "<td><form method=\"post\" action=\"doctor.jsp\">"
-							+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
-							+ "<input name=\"hidDoctorIDDelete\" type=\"hidden\" value=\"" + doctorID + "\">" + "</form></td></tr>";
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary'></td>"+ "<td><input name='btnRemove'type='button' value='Remove'class='btnRemove btn btn-danger'data-doctorid='"+ doctorID + "'>" + "</td></tr>";
 				}
 				
 				con.close();
@@ -139,11 +137,12 @@ public class Doctor
 				preparedStmt.execute();
 				con.close();
 		
-				output = "Updated successfully";
+				String newDoctor = readDoctor();
+				output = "{\"status\":\"success\", \"data\": \"" + newDoctor + "\"}";
 		}
 		catch (Exception e)
 		{
-			output = "Error while updating the doctor details.";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the doctor details.\"}";
 			System.err.println(e.getMessage());
 		}
 			return output;
@@ -172,11 +171,12 @@ public class Doctor
 			preparedStmt.execute();
 			con.close();
 		
-			output = "Deleted successfully";
+			String newDoctor = readDoctor();
+			output = "{\"status\":\"success\", \"data\": \"" + newDoctor + "\"}";
 		}
 		catch (Exception e)
 		{
-			output = "Error while deleting the doctor details.";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the doctor details.\"}";
 			System.err.println(e.getMessage());
 		}
 		
