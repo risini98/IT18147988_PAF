@@ -16,7 +16,8 @@ import java.util.Scanner;
  * Servlet implementation class DoctorAPI
  */
 @WebServlet("/DoctorAPI")
-public class DoctorAPI extends HttpServlet {
+public class DoctorAPI extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
 	
 	Doctor doctorObj = new Doctor();
@@ -24,7 +25,8 @@ public class DoctorAPI extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DoctorAPI() {
+    public DoctorAPI() 
+    {
         super();
         
     }

@@ -23,6 +23,7 @@ $(document).on("click", "#btnSave", function(event) {
     }
     // If valid----------------------------------
     var type = ($("#hidDoctorIDSave").val() == "") ? "POST" : "PUT";
+    
     $.ajax(
     	{
     		url : "DoctorAPI",
@@ -75,7 +76,7 @@ $(document).on("click", ".btnUpdate", function(event) {
 });
 //REMOVE==================================================
 $(document).on("click", ".btnRemove", function(event)
-		{
+{
 		$.ajax(
 		{
 		url : "DoctorAPI",
@@ -94,16 +95,19 @@ function onDoctorDeleteComplete(response, status)
 if (status == "success")
 	{
 		var resultSet = JSON.parse(response);
+		
 		if (resultSet.status.trim() == "success")
 			{
 				$("#alertSuccess").text("Successfully deleted.");
 				$("#alertSuccess").show();
+				
 				$("#divDoctorGrid").html(resultSet.data);
 			} else if (resultSet.status.trim() == "error")
 			{
 				$("#alertError").text(resultSet.data);
 				$("#alertError").show();
 			}
+		
 	} else if (status == "error")
 	{
 		$("#alertError").text("Error while deleting.");
