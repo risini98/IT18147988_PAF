@@ -12,30 +12,33 @@
 <script src="Components/jquery.min.js"></script>
 <script src="Components/doctor.js"></script>
   <style>
+  
 body {
-  background-color: #E6E6FA;
+  background-color: #B6D3EE;
 }
+
 </style>
+
 </head>
 <body >
-<h1 style="font-family:verdana">Health Care Management</h1><br><br>
+<h1 style="font-family:verdana"><b><center><p style="color:brown">Health Care Management</p></center></b></h1><br><br>
 	<div class="container">
 	<div class="row">
 	<div class="col-6">
 		
-		<h2>Doctor Register Details</h2><br>
+		<h2><center><p style="color:blue">Doctor Register Details</p></center></h2><br>
 		
 			<form id="formDoctor" name="formDoctor">
-					Doctor Name:
+					<b>Doctor Name:</b>
 					<input type="text" class="form-control form-control-sm"  id="doctorName" placeholder="Enter your name" name="doctorName"><br>
 					
-					Doctor Age:
+					<b>Doctor Age:</b>
 					<input type="text" class="form-control form-control-sm"  id="doctorAge" placeholder="Enter your age" name="doctorAge"><br>
 					
-					Mail:
+					<b>Mail:</b>
 					<input type="text" class="form-control form-control-sm" id="doctorMail" placeholder="Enter your mail" name="doctorMail"><br>
 					
-					Speciality:
+					<b>Speciality:</b>
 					<input type="text" class="form-control form-control-sm" id="doctorSpeciality" placeholder="Enter your speciality" name="doctorSpeciality"><br>
 					
 					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
