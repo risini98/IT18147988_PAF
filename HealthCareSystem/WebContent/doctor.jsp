@@ -21,7 +21,19 @@ body {
 
 </head>
 <body >
-<h1 style="font-family:verdana"><b><center><p style="color:brown">Health Care Management</p></center></b></h1><br><br>
+<nav class ="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#"><h1><center><b><p style="color:brown">Health Care Management</p></b></center></h1></a>
+	<div class="navbar-header navbar-right">
+		<ul class="nav navbar-nav">
+			<li><a href="#"><b>Home</b></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#"><b>Doctor</b></a></li>
+		</ul>
+	</div>
+	</div>
+</nav>
+
+
+
 	<div class="container">
 	<div class="row">
 	<div class="col-6">
@@ -47,15 +59,17 @@ body {
 				<div id="alertSuccess" class="alert alert-success"></div>
 	        	<div id="alertError" class="alert alert-danger"></div>
 	        <br>
-	        	<div id="divDoctorGrid">
+	        	
+	       </div>  
+	       </div>
+	       </div>
+	       
+	       <div id="divDoctorGrid">
 	        	<%
 	                Doctor doctorObj = new Doctor();
 	                out.print(doctorObj.readDoctor());
              	%>
              	</div>
-	       </div>  
-	       </div>
-	       </div>
 				   
 </body>
 </html>
